@@ -1985,6 +1985,24 @@ unsigned ZigClangFunctionDecl_getAlignedAttribute(const struct ZigClangFunctionD
     return 0;
 }
 
+bool ZigClangVarDecl_getPackedAttribute(const struct ZigClangVarDecl *self) {
+    auto casted_self = reinterpret_cast<const clang::VarDecl *>(self);
+    if (const clang::PackedAttr *PA = casted_self->getAttr<clang::PackedAttr>()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool ZigClangFieldDecl_getPackedAttribute(const struct ZigClangFieldDecl *self) {
+    auto casted_self = reinterpret_cast<const clang::FieldDecl *>(self);
+    if (const clang::PackedAttr *PA = casted_self->getAttr<clang::PackedAttr>()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ZigClangQualType ZigClangParmVarDecl_getOriginalType(const struct ZigClangParmVarDecl *self) {
     return bitcast(reinterpret_cast<const clang::ParmVarDecl *>(self)->getOriginalType());
 }
