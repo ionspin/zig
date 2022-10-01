@@ -1987,7 +1987,7 @@ unsigned ZigClangFunctionDecl_getAlignedAttribute(const struct ZigClangFunctionD
 
 bool ZigClangVarDecl_getPackedAttribute(const struct ZigClangVarDecl *self) {
     auto casted_self = reinterpret_cast<const clang::VarDecl *>(self);
-    if (const clang::PackedAttr *PA = casted_self->getAttr<clang::PackedAttr>()) {
+    if (casted_self->getAttr<clang::PackedAttr>()) {
         return true;
     } else {
         return false;
@@ -1996,7 +1996,7 @@ bool ZigClangVarDecl_getPackedAttribute(const struct ZigClangVarDecl *self) {
 
 bool ZigClangFieldDecl_getPackedAttribute(const struct ZigClangFieldDecl *self) {
     auto casted_self = reinterpret_cast<const clang::FieldDecl *>(self);
-    if (const clang::PackedAttr *PA = casted_self->getAttr<clang::PackedAttr>()) {
+    if (casted_self->getAttr<clang::PackedAttr>()) {
         return true;
     } else {
         return false;
